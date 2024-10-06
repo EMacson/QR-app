@@ -14,7 +14,10 @@ const onGenerateSubmit = (e) => {
     } else {
         generateQRCode(url, size);
 
-        
+        setTimeout(() => {
+            const saveUrl = qr.querySelector('img').src;
+            createSaveBtn(saveUrl);
+        }, 50);
     }
 };
 
@@ -28,6 +31,8 @@ const generateQRCode = (url, size) => {
 
 const clearUI = () => {
     qr.innerHTML = '';
+    const saveLink = document.getElementById('save-link');
+    if(saveLink) saveLink.remove();
 };
 
 const createSaveBtn = (saveUrl) => {
